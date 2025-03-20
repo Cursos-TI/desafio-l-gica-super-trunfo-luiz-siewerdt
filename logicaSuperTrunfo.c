@@ -82,16 +82,101 @@ void calcularPipPerCapita(Carta *c) {
   c->pibPerCapita = c->pib / (float)c->populacao;
 }
 
+void compararPopulacao(Carta *c1, Carta *c2) {
+  if (c1->populacao > c2->populacao)
+
+    printf("Carta 1 venceu na comparação de População!\n");
+  else if (c1->populacao < c2->populacao)
+    printf("Carta 2 venceu na comparação de População!\n");
+  else
+
+    printf("Empate na comparação de População!\n");
+}
+
+void compararArea(Carta *c1, Carta *c2) {
+  if (c1->area > c2->area)
+    printf("Carta 1 venceu na comparação de Área!\n");
+  else if (c1->area < c2->area)
+    printf("Carta 2 venceu na comparação de Área!\n");
+
+  else
+    printf("Empate na comparação de Área!\n");
+}
+
+void compararPIB(Carta *c1, Carta *c2) {
+  if (c1->pib > c2->pib)
+    printf("Carta 1 venceu na comparação de PIB!\n");
+  else if (c1->pib < c2->pib)
+    printf("Carta 2 venceu na comparação de PIB!\n");
+  else
+    printf("Empate na comparação de PIB!\n");
+}
+
+void compararPontosTuristicos(Carta *c1, Carta *c2) {
+  if (c1->pontosTuristicos > c2->pontosTuristicos)
+    printf("Carta 1 venceu na comparação de Pontos Turísticos!\n");
+  else if (c1->pontosTuristicos < c2->pontosTuristicos)
+    printf("Carta 2 venceu na comparação de Pontos Turísticos!\n");
+  else
+    printf("Empate na comparação de Pontos Turísticos!\n");
+}
+
+void compararDensidade(Carta *c1, Carta *c2) {
+  if (c1->densidade < c2->densidade)
+
+    printf("Carta 1 venceu na comparação de Densidade Demográfica!\n");
+  else if (c1->densidade > c2->densidade)
+    printf("Carta 2 venceu na comparação de Densidade Demográfica!\n");
+  else
+    printf("Empate na comparação de Densidade Demográfica!\n");
+}
+
 void cartaVitoriosa(Carta *c1, Carta *c2) {
-  // Comparando Densidade
-  printf("\nComparação de cartas (Atributo: Densidade)");
-  printf("\nCarta 1 - %s: %.2f\n", c1->estado, c1->densidade);
-  printf("\nCarta 2 - %s: %.2f\n", c2->estado, c2->densidade);
-  printf("\nResultado: ");
-  if (c1->densidade < c2->densidade) {
-    printf("Carta 1 (%s) venceu!!\n", c1->estado);
-  } else {
-    printf("Carta 2 (%s) venceu!! \n", c2->estado);
+  int input;
+  printf("\nSelecione qual atributo comparar:\n");
+  printf("1) Nome do país (Apenas para Exibir)\n");
+  printf("2) População\n");
+  printf("3) Área\n");
+  printf("4) PIB\n");
+  printf("5) Número de Pontos Turísticos\n");
+  printf("6) Densidade Demográfica\n");
+
+  scanf("%i", &input);
+
+  if (input < 1 || input > 6) {
+    printf("Opção inválida! Tente novamente.\n");
+
+    return;
+  }
+
+  printf("\nComparando Carta 1 com Carta 2:\n");
+
+  switch (input) {
+  case 1:
+    printf("Nome do país:\n");
+    printf("Carta 1: %s\n", c1->estado);
+    printf("Carta 2: %s\n", c2->estado);
+    break;
+
+  case 2:
+    compararPopulacao(c1, c2);
+    break;
+
+  case 3:
+    compararArea(c1, c2);
+    break;
+
+  case 4:
+    compararPIB(c1, c2);
+    break;
+
+  case 5:
+    compararPontosTuristicos(c1, c2);
+    break;
+
+  case 6:
+    compararDensidade(c1, c2);
+    break;
   }
 }
 
